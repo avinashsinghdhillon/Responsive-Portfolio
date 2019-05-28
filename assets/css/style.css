@@ -9,18 +9,23 @@ h1, h2 {
 body {
     margin: 0px;
     background-color: lightgrey;
+    box-sizing: border-box;
 }
 
 header {
     height: 80px;
     background-color: #ffffff;
     border: 2px solid #cccccc;
+    display: block;
 }
 
 .top-bar {
     margin: 0 auto;
     height: 80px;
-    width: 960px;
+    max-width: 960px;
+    width: 100%;
+    display: flexbox;
+    overflow-wrap: normal;
     position: relative;
 }
 
@@ -47,7 +52,8 @@ a:any-link {
 }
 
 .main-content {
-    width: 960px;
+    max-width: 960px;
+    width: 100%;
     margin: 0 auto;
     background-color: #ffffff;
     position: relative;
@@ -62,6 +68,13 @@ h2 {
     color: #4aaaa5;
     border-bottom: 2px solid #777777;
     padding-bottom: 20px;
+    opacity: 1;
+
+    /* animation */
+    animation-name: fader;
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+    animation-iteration-count: 3;
 }
 
 p {
@@ -119,4 +132,74 @@ button {
 .flex-container {
     display: flex;
     flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 980px) {
+
+/* did not know what if anything was required here */
+}
+
+@media only screen and (max-width: 768px) {
+
+    header {
+        position: static;
+    }
+
+    .top-bar {
+        margin: 0 auto;
+        max-width: 768px;
+        position: relative;
+        display: inline;
+    }
+
+    .name {
+        position: absolute;
+        width: 250px;
+        left: 0px;
+        top: 0px;
+    }
+
+    .nav-bar {
+        /* float: inline-end;
+        right: -65%;
+        top: 30px; */
+        position: absolute;
+        right: -550px;
+        top: 30px;
+    }
+
+}
+
+@media only screen and (max-width: 640px) {
+
+    header {
+        position: static;
+        height: auto;
+    }
+
+    .top-bar {
+        margin: 0 auto;
+        height: 100%;
+        max-width: 640px;
+        width: 100%;
+        position: static;
+        display: flexbox;
+    }
+
+    .name {
+        width: 100%;
+        position: static;
+        margin: 0 auto;
+    }
+
+    .nav-bar {
+        width: 100%;
+        position: static;
+        margin: 0 auto;
+    }
+}
+
+@keyframes fader {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
